@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
+import com.example.listapp.Injection;
 import com.example.listapp.RMApi;
 import com.example.listapp.model.RestRMResponse;
 import com.example.listapp.model.RickandMorty;
@@ -49,15 +50,7 @@ public class MainController {
     private void makeApiCall(){
 
 
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(MainActivity.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        RMApi rmapi = retrofit.create(RMApi.class);
-
-        Call<RestRMResponse> call = rmapi.getRMResponse();
+        Call<RestRMResponse> call = Injection.getRMApi().getRMResponse();
         call.enqueue(new Callback<RestRMResponse>() {
             @Override
             public void onResponse(Call<RestRMResponse> call, Response<RestRMResponse> response) {

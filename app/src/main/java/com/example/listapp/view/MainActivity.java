@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.listapp.Injection;
 import com.example.listapp.R;
 import com.example.listapp.RMApi;
 import com.example.listapp.controller.MainController;
@@ -45,10 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         controller = new MainController(
                 this,
-                new GsonBuilder()
-                        .setLenient()
-                        .create(),
-            getSharedPreferences("application_esiea", Context.MODE_PRIVATE)
+                Injection.getGson(),
+            Injection.getSharedPreference(getApplicationContext())
         );
         controller.onStart();
     }
