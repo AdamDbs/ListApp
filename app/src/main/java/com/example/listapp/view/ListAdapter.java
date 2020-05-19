@@ -1,4 +1,4 @@
-package com.example.listapp;
+package com.example.listapp.view;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.listapp.R;
+import com.example.listapp.model.RickandMorty;
 
 import java.util.List;
 

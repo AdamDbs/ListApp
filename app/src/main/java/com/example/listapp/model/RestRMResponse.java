@@ -1,4 +1,4 @@
-package com.example.listapp;
+package com.example.listapp.model;
 
 import java.util.List;
 

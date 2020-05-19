@@ -1,4 +1,4 @@
-package com.example.listapp;
+package com.example.listapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +9,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.listapp.R;
+import com.example.listapp.RMApi;
+import com.example.listapp.model.RestRMResponse;
+import com.example.listapp.model.RickandMorty;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
