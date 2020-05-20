@@ -2,7 +2,7 @@
 
 Cecci est mon application réalisée avec Android Studio. Elle répertorie tous les personnages de rick et morty existant dans les différents univers vus dans la série.
 
-Pour pouvoir présenter ces informations, j'ai utilisé l'API : https://rickandmortyapi.com/ sur lequel j'ai récupérer les données dont j'avais besoins.
+Pour pouvoir présenter ces informations, j'ai utilisé l'API : https://rickandmortyapi.com/ sur lequel j'ai récupéré les données dont j'avais besoins.
 
 L'application utilise une liste dans le "MainActivity" qui récupère les données à afficher sur l'API (soit le nom des personnages, l'URL de la page suivante contenant la suite des personnages et une liste contenant tous les personnages et leurs informations). J'ai aussi ajouté une image comme icone apparaissant sur le côté de l'élément de la liste (une image de rick et morty).
 
