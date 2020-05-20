@@ -7,6 +7,7 @@ public class RickandMorty {
     private String name;
     private String status;
     private String species;
+    private String gender;
     private String url;
     private String image;
 
@@ -21,13 +22,13 @@ public class RickandMorty {
         return status;
     }
 
+    public String getGender(){ return gender; }
+
     public String getSpecies(){
         return species;
     }
 
-    public String getUrl() {
-        return url;
-    }
+    public String getUrl() { return url; }
 
-    public String getImage(){return image; }
+    public String getImage() { return image; }
 }

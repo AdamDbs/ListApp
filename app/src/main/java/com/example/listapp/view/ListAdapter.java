@@ -72,7 +72,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         final RickandMorty currentRM = values.get(position);
         holder.txtHeader.setText(currentRM.getName());
-        holder.txtFooter.setText(currentRM.getUrl());
+        holder.txtFooter.setText(currentRM.getGender());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
