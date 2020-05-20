@@ -28,6 +28,7 @@ public class MainController {
     private Gson gson;
     private MainActivity view;
 
+
     public MainController(MainActivity mainActivity, Gson gson, SharedPreferences sharedPreferences) {
         this.view = mainActivity;
         this.gson = gson;
@@ -94,6 +95,6 @@ public class MainController {
     }
 
     public void onItemClick(RickandMorty rickandMorty){
-
+        view.navigateToDetails(rickandMorty);
     }
 }

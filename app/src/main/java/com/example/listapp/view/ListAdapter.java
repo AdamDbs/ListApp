@@ -14,10 +14,13 @@ import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<RickandMorty> values;
+    private OnItemClickListener listener;
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
+    public interface OnItemClickListener {
+        void onItemClick(RickandMorty item);
+    }
+
+
     class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         TextView txtHeader;
@@ -43,11 +46,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ListAdapter(List<RickandMorty> myDataset) {
+    public ListAdapter(List<RickandMorty> myDataset, OnItemClickListener listener) {
         values = myDataset;
+        this.listener = listener;
     }
 
-    // Create new views (invoked by the layout manager)
+
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
@@ -68,14 +72,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         final RickandMorty currentRM = values.get(position);
         holder.txtHeader.setText(currentRM.getName());
-        holder.txtHeader.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                remove(position);
+        holder.txtFooter.setText(currentRM.getUrl());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                if(listener != null) {
+                    listener.onItemClick(currentRM);
+                }
             }
         });
-
-        holder.txtFooter.setText(currentRM.getUrl());
     }
 
     // Return the size of your dataset (invoked by the layout manager)

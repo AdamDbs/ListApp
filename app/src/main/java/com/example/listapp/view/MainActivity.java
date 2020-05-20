@@ -4,29 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.listapp.Injection;
 import com.example.listapp.R;
-import com.example.listapp.RMApi;
 import com.example.listapp.controller.MainController;
-import com.example.listapp.model.RestRMResponse;
 import com.example.listapp.model.RickandMorty;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,8 +48,13 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        // define an adapter
-        mAdapter = new ListAdapter(rickandMortyList);
+
+        mAdapter = new ListAdapter(rickandMortyList, new ListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(RickandMorty item) {
+                controller.onItemClick(item);
+            }
+        });
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -69,5 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void showError() {
         Toast.makeText(this, "API Error", Toast.LENGTH_SHORT).show();
+    }
+
+    public void navigateToDetails(RickandMorty rickandMorty) {
+        Intent myIntent = new Intent(MainActivity.this, DetailActivity.class);
+        myIntent.putExtra("RMkey", Injection.getGson().toJson(rickandMorty));
+
+        MainActivity.this.startActivity(myIntent);
     }
 }
